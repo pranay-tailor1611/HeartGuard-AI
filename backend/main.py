@@ -4,9 +4,9 @@ from fastapi.staticfiles import StaticFiles
 import os
 import logging
 
-from backend.routes import router
-from backend.predict import predictor
-from backend.config import APP_TITLE, APP_VERSION
+from routes import router
+from predict import predictor
+from config import APP_TITLE, APP_VERSION
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)

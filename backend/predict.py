@@ -2,8 +2,8 @@ import joblib
 import pandas as pd
 import numpy as np
 import logging
-from backend.config import MODEL_PATH, SCALER_PATH, COLUMNS_PATH
-from backend.schemas import PatientInput
+from config import MODEL_PATH, SCALER_PATH, COLUMNS_PATH
+from schemas import PatientInput
 
 logger = logging.getLogger(__name__)
 

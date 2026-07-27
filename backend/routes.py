@@ -2,10 +2,10 @@ from fastapi import APIRouter, HTTPException, status
 from datetime import datetime
 import logging
 
-from backend.schemas import PatientInput, PredictionResponse, HealthCheckResponse
-from backend.predict import predictor
-from backend.utils import generate_recommendations, compute_health_score, get_dataset_stats
-from backend.config import APP_VERSION
+from schemas import PatientInput, PredictionResponse, HealthCheckResponse
+from predict import predictor
+from utils import generate_recommendations, compute_health_score, get_dataset_stats
+from config import APP_VERSION
 
 logger = logging.getLogger(__name__)
 router = APIRouter(prefix="/api")

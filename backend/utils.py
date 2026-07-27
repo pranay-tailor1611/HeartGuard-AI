@@ -1,8 +1,8 @@
 import pandas as pd
 import os
 import logging
-from backend.config import DATASET_PATH
-from backend.schemas import Recommendations
+from config import DATASET_PATH
+from schemas import Recommendations
 
 logger = logging.getLogger(__name__)
 
