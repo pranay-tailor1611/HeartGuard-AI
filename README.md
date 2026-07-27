@@ -1,84 +1,187 @@
-# CardioPulse AI — Production Full-Stack Web Application
+# ❤️ CardioPulse AI — Cardiovascular Disease Risk Prediction System
 
-CardioPulse AI is a enterprise-grade full-stack healthcare web application for **Cardiovascular Disease Risk Prediction**. Powered by a pre-trained K-Nearest Neighbors (KNN) Machine Learning classifier, FastAPI microservice backend, and a modern Bootstrap 5 / Vanilla JS minimalist frontend.
+## 📌 Overview
+
+CardioPulse AI is an enterprise-grade full-stack healthcare web application designed for **Cardiovascular Disease Risk Prediction**.
+
+The application uses a pre-trained **K-Nearest Neighbors (KNN) Machine Learning classifier** with a **FastAPI backend** and a modern responsive frontend to analyze patient health parameters and predict cardiovascular disease risk.
+
+This project demonstrates the integration of Artificial Intelligence, Machine Learning, and Full-Stack Web Development to build a real-world healthcare prediction system.
 
 ---
 
-## 🏗️ Architecture & Directory Structure
+# 🚀 Features
+
+## 🤖 Machine Learning Prediction
+- Cardiovascular disease risk prediction using KNN classifier.
+- Pre-trained ML model integration.
+- Probability-based prediction results.
+- Standardized input processing using saved scaler.
+
+## 🩺 Patient Risk Assessment
+
+Users can provide medical information including:
+
+- Age
+- Gender
+- Chest Pain Type
+- Resting Blood Pressure
+- Cholesterol Level
+- Fasting Blood Sugar
+- Resting ECG
+- Maximum Heart Rate
+- Exercise Angina
+- Oldpeak
+- ST Slope
+
+and receive instant risk prediction.
+
+## 📊 Analytics Dashboard
+
+- Interactive healthcare analytics dashboard.
+- Dataset statistics visualization.
+- Chart.js based data representation.
+
+## ⚡ FastAPI Backend
+
+- High-performance REST API.
+- Automatic API documentation.
+- Clean backend architecture.
+- Health monitoring endpoint.
+
+## 🎨 Modern Frontend
+
+- Responsive healthcare interface.
+- Bootstrap 5 styling.
+- Vanilla JavaScript functionality.
+- Interactive animations.
+
+---
+
+# 🏗️ System Architecture
+
+```
+User
+ |
+ ↓
+Frontend Interface
+(HTML + CSS + JavaScript)
+ |
+ ↓
+FastAPI Backend
+ |
+ ↓
+ML Prediction Pipeline
+ |
+ ↓
+KNN Classification Model
+ |
+ ↓
+Risk Prediction Result
+```
+
+---
+
+# 📂 Project Structure
 
 ```
 HeartDiseasePrediction/
+
 ├── backend/
-│   ├── main.py              # FastAPI Application Entry & Static File Server
-│   ├── routes.py            # API Route Handlers (/api/predict, /api/health, /api/dataset/stats)
-│   ├── predict.py           # Preserved ML Inference Pipeline Engine
-│   ├── schemas.py           # Pydantic Input/Output Schemas
-│   ├── config.py            # Model File Locations & Configuration Settings
-│   ├── utils.py             # Recommendation Generator & Dataset Analytics
-│   ├── requirements.txt     # Backend Python Dependencies
+│   ├── main.py
+│   ├── routes.py
+│   ├── predict.py
+│   ├── schemas.py
+│   ├── config.py
+│   ├── utils.py
+│   ├── requirements.txt
+│   │
 │   └── models/
-│       ├── model.pkl        # Preserved KNN Classifier Model
-│       ├── scaler.pkl       # Preserved StandardScaler Object
-│       └── columns.pkl      # Preserved Dummy Column Mapping Definitions
+│       ├── model.pkl
+│       ├── scaler.pkl
+│       └── columns.pkl
 │
 ├── frontend/
-│   ├── index.html           # Landing Page & Feature Showcase
-│   ├── prediction.html      # 2-Column Assessment Form, BMI Calc & Results
-│   ├── dashboard.html       # Chart.js Visual Analytics Dashboard
-│   ├── about.html           # Pathology & Diagnostics Guide
-│   ├── faq.html             # Accordion FAQ Component
-│   ├── contact.html         # Emergency Contacts & Consultation Hotlines
-│   ├── developer.html       # Senior Full-Stack AI Engineer Profile
+│   ├── index.html
+│   ├── prediction.html
+│   ├── dashboard.html
+│   ├── about.html
+│   ├── faq.html
+│   ├── contact.html
+│   ├── developer.html
+│   │
 │   ├── css/
-│   │   └── style.css        # Minimalist Luxury SaaS Stylesheet
+│   │   └── style.css
+│   │
 │   └── js/
-│       ├── app.js           # Shared App Controller & Health Checks
-│       ├── prediction.js    # Prediction Fetch API Request Handler
-│       ├── dashboard.js     # Chart.js Visual Analytics Engine
-│       └── animations.js   # AOS Animation Initializer
+│       ├── app.js
+│       ├── prediction.js
+│       ├── dashboard.js
+│       └── animations.js
 │
 └── README.md
 ```
 
 ---
 
-## 🔒 Preserved ML Engine
+# 🔒 Machine Learning Model
 
-- Models loaded directly from `backend/models/`:
-  - `model.pkl` (KNN Classifier)
-  - `scaler.pkl` (StandardScaler)
-  - `columns.pkl` (Expected Feature List)
-- **Zero Retraining or Pipeline Modification**: Identical dummy column mapping (`Sex_`, `ChestPainType_`, `RestingECG_`, `ExerciseAngina_`, `ST_Slope_`), standard scaling, `predict()`, and `predict_proba()` functions preserved.
+The ML engine uses a trained:
+
+### Model
+- K-Nearest Neighbors (KNN)
+
+### Saved ML Components
+
+```
+model.pkl
+```
+Contains the trained KNN classifier.
+
+```
+scaler.pkl
+```
+Contains StandardScaler for feature normalization.
+
+```
+columns.pkl
+```
+Contains expected feature mapping definitions.
+
+The original ML pipeline is preserved including:
+
+- Feature encoding
+- Column mapping
+- Data scaling
+- Model prediction
+- Probability calculation
 
 ---
 
-## 🚀 Quickstart & Server Launch
+# 🔌 API Endpoints
 
-### 1. Install Backend Dependencies
-```bash
-pip install -r backend/requirements.txt
+## Health Check
+
+### GET
+
+```
+/api/health
 ```
 
-### 2. Launch FastAPI Full-Stack Web Server
-```bash
-python -m uvicorn backend.main:app --reload --host 127.0.0.1 --port 8000
-```
-
-### 3. Access Application in Browser
-Open your browser and navigate to:
-- **Web App UI**: `http://127.0.0.1:8000/`
-- **Interactive Swagger API Docs**: `http://127.0.0.1:8000/docs`
-- **ReDoc API Documentation**: `http://127.0.0.1:8000/redoc`
+Checks backend status and confirms ML model availability.
 
 ---
 
-## 🔌 API Endpoints
+## Prediction API
 
-### `GET /api/health`
-Returns backend service health status and loaded model confirmation.
+### POST
 
-### `POST /api/predict`
-Accepts patient physiological data JSON and executes ML inference.
+```
+/api/predict
+```
+
+Example Request:
+
 ```json
 {
   "age": 55,
@@ -95,5 +198,156 @@ Accepts patient physiological data JSON and executes ML inference.
 }
 ```
 
-### `GET /api/dataset/stats`
-Returns aggregated statistical metrics calculated from `heart.csv` for Chart.js visual analytics.
+---
+
+## Dataset Statistics
+
+### GET
+
+```
+/api/dataset/stats
+```
+
+Provides statistical information used for dashboard visualization.
+
+---
+
+# ⚙️ Installation & Setup
+
+## Clone Repository
+
+```bash
+git clone https://github.com/pranay-tailor1611/HeartGuard-AI
+```
+
+Go to project folder:
+
+```bash
+cd HeartDiseasePrediction
+```
+
+---
+
+## Install Dependencies
+
+```bash
+pip install -r backend/requirements.txt
+```
+
+---
+
+## Run Application
+
+```bash
+python -m uvicorn backend.main:app --reload --host 127.0.0.1 --port 8000
+```
+
+---
+
+## Access Application
+
+Web Application:
+
+```
+http://127.0.0.1:8000/
+```
+
+Swagger API Documentation:
+
+```
+http://127.0.0.1:8000/docs
+```
+
+ReDoc Documentation:
+
+```
+http://127.0.0.1:8000/redoc
+```
+
+---
+
+# 🛠️ Tech Stack
+
+## Frontend
+
+- HTML5
+- CSS3
+- JavaScript
+- Bootstrap 5
+- Chart.js
+- AOS Animation
+
+## Backend
+
+- Python
+- FastAPI
+- Pydantic
+- Uvicorn
+
+## Machine Learning
+
+- Scikit-learn
+- Pandas
+- NumPy
+
+## Deployment
+
+- Render
+- GitHub
+
+---
+
+# 🌐 Live Demo
+
+Live Application:
+
+https://heartguard-ai-3.onrender.com/
+
+---
+
+# 📸 Screenshots
+
+## 🏠 Home Page
+
+![Home Page](screenshots/home.png)
+
+## ❤️ Prediction Page
+
+##   About Page
+
+![about Page](screenshots/about.png)
+
+![Prediction Page](screenshots/prediction.png)
+
+## 📊 Dashboard
+
+![Dashboard](screenshots/dashboard.png)
+
+## ✅ Prediction Result
+
+![Prediction Result](screenshots/predictOutput.png)
+
+---
+
+# 🔮 Future Improvements
+
+- Add user authentication.
+- Store prediction history.
+- Add doctor dashboard.
+- Integrate real-time health monitoring.
+- Improve prediction accuracy using advanced ML/DL models.
+
+---
+
+# 👨‍💻 Developer
+
+**Pranay Tailor**
+
+B.Tech Computer Science Engineering
+
+GitHub:
+https://github.com/pranay-tailor1611
+
+---
+
+⭐ If you like this project, consider giving it a star on GitHub.
