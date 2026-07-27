@@ -8,7 +8,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
 async function fetchDashboardStats() {
     try {
-        const response = await fetch("/api/dataset/stats");
+        const apiBase = window.API_BASE_URL || "";
+        const response = await fetch(`${apiBase}/api/dataset/stats`);
         if (!response.ok) return;
         const data = await response.json();
         renderDashboardCharts(data);

@@ -1,8 +1,13 @@
+import sys
+import os
+import logging
+
+# Ensure backend directory is in Python path regardless of execution directory
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
-import os
-import logging
 
 from routes import router
 from predict import predictor
@@ -18,9 +23,12 @@ app = FastAPI(
 )
 
 # Enable CORS for cross-origin frontend requests
+allowed_origins_raw = os.getenv("ALLOWED_ORIGINS", "*")
+allowed_origins = [origin.strip() for origin in allowed_origins_raw.split(",")] if allowed_origins_raw != "*" else ["*"]
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=allowed_origins,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -43,4 +51,8 @@ if os.path.exists(frontend_path):
 
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run("backend.main:app", host="127.0.0.1", port=8000, reload=True)
+    host = os.getenv("HOST", "0.0.0.0")
+    port = int(os.getenv("PORT", 8000))
+    is_debug = os.getenv("ENVIRONMENT", "development").lower() == "development"
+    uvicorn.run("main:app", host=host, port=port, reload=is_debug)
+

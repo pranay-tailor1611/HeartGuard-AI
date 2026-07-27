@@ -80,7 +80,8 @@ async function handlePredictionSubmit(e) {
     if (submitBtn) submitBtn.disabled = true;
 
     try {
-        const response = await fetch("/api/predict", {
+        const apiBase = window.API_BASE_URL || "";
+        const response = await fetch(`${apiBase}/api/predict`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(payload)

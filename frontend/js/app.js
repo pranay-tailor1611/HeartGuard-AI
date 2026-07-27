@@ -23,7 +23,8 @@ async function checkBackendHealth() {
     if (!statusBadge) return;
 
     try {
-        const response = await fetch("/api/health");
+        const apiBase = window.API_BASE_URL || "";
+        const response = await fetch(`${apiBase}/api/health`);
         if (response.ok) {
             const data = await response.json();
             statusBadge.innerHTML = `🟢 <b>System Status:</b> Operational (v${data.version})`;
