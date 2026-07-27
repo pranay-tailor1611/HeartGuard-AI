@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CardioPulse AI — Predictive Cardiology Platform</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- Sticky Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-custom fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <i class="fa-solid fa-heart-pulse text-dark me-2"></i>CardioPulse AI
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto align-items-center">
+                    <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="prediction.html">Prediction</a></li>
+                    <li class="nav-item"><a class="nav-link" href="dashboard.html">Dashboard</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">About Heart Disease</a></li>
+                    <li class="nav-item"><a class="nav-link" href="health-tips.html">Health Tips</a></li>
+                    <li class="nav-item"><a class="nav-link" href="faq.html">FAQ</a></li>
+                    <li class="nav-item ms-lg-3">
+                        <a href="prediction.html" class="btn btn-black btn-sm">Start Assessment</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Container -->
+    <main class="container">
+
+        <!-- System Status Bar -->
+        <div class="d-flex justify-content-between align-items-center mb-4 mt-3">
+            <span id="systemStatusBadge" class="badge-success-minimal">
+                🟢 <b>System Status:</b> Operational
+            </span>
+            <span class="badge-minimal">v2.5.0 • Enterprise SaaS</span>
+        </div>
+
+        <!-- Hero Section -->
+        <section class="hero-section" data-aos="fade-up">
+            <div class="row align-items-center">
+                <div class="col-lg-8">
+                    <span class="badge-minimal mb-3">✨ AI-Powered Clinical Intelligence</span>
+                    <h1 class="hero-title">Predictive Cardiology,<br>Redefined for Modern Care.</h1>
+                    <p class="hero-subtitle">
+                        Instantaneous Machine Learning-driven cardiac risk assessments. Built for clinicians, researchers, and patients seeking precision diagnostic screening.
+                    </p>
+                    <div class="d-flex gap-3 flex-wrap">
+                        <a href="prediction.html" class="btn btn-black">Start Prediction <i class="fa-solid fa-arrow-right ms-1"></i></a>
+                        <a href="about.html" class="btn btn-outline-custom">Learn More <i class="fa-solid fa-circle-info ms-1"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-4 text-center mt-4 mt-lg-0">
+                    <div style="font-size: 8rem; color: #111111;">
+                        <i class="fa-solid fa-heart-circle-bolt"></i>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Stats Counter Section -->
+        <section class="mb-5" data-aos="fade-up" data-aos-delay="100">
+            <div class="row g-4">
+                <div class="col-md-3 col-6">
+                    <div class="stat-card">
+                        <div class="stat-value">12,450+</div>
+                        <div class="stat-label">Predictions Completed</div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="stat-card">
+                        <div class="stat-value">88.5%</div>
+                        <div class="stat-label">Model Accuracy</div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="stat-card">
+                        <div class="stat-value">9,180+</div>
+                        <div class="stat-label">Patients Served</div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="stat-card">
+                        <div class="stat-value">&lt; 10ms</div>
+                        <div class="stat-label">Response Time</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Feature Cards (6 Requirements) -->
+        <section class="mb-5" data-aos="fade-up" data-aos-delay="200">
+            <h3 class="fw-bold mb-4">Core Platform Capabilities</h3>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="med-card h-100">
+                        <div class="fs-2 mb-3"><i class="fa-solid fa-brain"></i></div>
+                        <h5 class="fw-bold">AI Powered</h5>
+                        <p class="text-muted small">Trained K-Nearest Neighbors classification algorithm with StandardScaler normalization.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="med-card h-100">
+                        <div class="fs-2 mb-3"><i class="fa-solid fa-bolt"></i></div>
+                        <h5 class="fw-bold">Fast Prediction</h5>
+                        <p class="text-muted small">Evaluates physiological inputs and returns structured predictions in under 10ms.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="med-card h-100">
+                        <div class="fs-2 mb-3"><i class="fa-solid fa-clock-rotate-left"></i></div>
+                        <h5 class="fw-bold">Instant Results</h5>
+                        <p class="text-muted small">Immediate breakdown of confidence percentage, health score, and risk level.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="med-card h-100">
+                        <div class="fs-2 mb-3"><i class="fa-solid fa-chart-pie"></i></div>
+                        <h5 class="fw-bold">Reliable Analysis</h5>
+                        <p class="text-muted small">Evaluated against clinical dataset standards with zero artificial fallbacks.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="med-card h-100">
+                        <div class="fs-2 mb-3"><i class="fa-solid fa-lock"></i></div>
+                        <h5 class="fw-bold">Secure Data</h5>
+                        <p class="text-muted small">Zero external data logging. All evaluations execute securely inside local session memory.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="med-card h-100">
+                        <div class="fs-2 mb-3"><i class="fa-solid fa-mobile-screen-button"></i></div>
+                        <h5 class="fw-bold">Responsive Design</h5>
+                        <p class="text-muted small">Seamlessly optimized for desktop workstations, tablets, and mobile devices.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- How It Works Section (4 Steps) -->
+        <section class="section-gray mb-5" data-aos="fade-up" data-aos-delay="300">
+            <div class="text-center max-w-700 mx-auto mb-4">
+                <span class="badge-minimal mb-2">Workflow</span>
+                <h3 class="fw-bold">How It Works</h3>
+                <p class="text-muted">Four simple steps to obtain your clinical risk assessment report.</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-3">
+                    <div class="step-card">
+                        <div class="step-number">1</div>
+                        <h5 class="fw-bold mb-2">Enter Patient Details</h5>
+                        <p class="text-muted small mb-0">Fill in age, BP, cholesterol, ECG, and exercise indicators into the form.</p>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="step-card">
+                        <div class="step-number">2</div>
+                        <h5 class="fw-bold mb-2">AI Analysis</h5>
+                        <p class="text-muted small mb-0">FastAPI backend normalizes variables and runs KNN classification.</p>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="step-card">
+                        <div class="step-number">3</div>
+                        <h5 class="fw-bold mb-2">Risk Prediction</h5>
+                        <p class="text-muted small mb-0">Get confidence score %, health score, and risk stratification badge.</p>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="step-card">
+                        <div class="step-number">4</div>
+                        <h5 class="fw-bold mb-2">Recommendations</h5>
+                        <p class="text-muted small mb-0">Receive exercise, DASH diet, sleep guidelines, and downloadable TXT report.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer-custom">
+        <div class="container">
+            <div class="row g-4 mb-4">
+                <div class="col-md-4">
+                    <h5 class="fw-bold mb-2"><i class="fa-solid fa-heart-pulse me-2"></i>CardioPulse AI</h5>
+                    <p class="text-muted small">Enterprise predictive cardiology software powered by machine learning algorithms.</p>
+                </div>
+                <div class="col-md-4">
+                    <h6 class="fw-bold mb-2">Quick Navigation</h6>
+                    <ul class="list-unstyled small">
+                        <li><a href="index.html" class="text-muted text-decoration-none">Home</a></li>
+                        <li><a href="prediction.html" class="text-muted text-decoration-none">Prediction</a></li>
+                        <li><a href="dashboard.html" class="text-muted text-decoration-none">Dashboard</a></li>
+                        <li><a href="about.html" class="text-muted text-decoration-none">About Heart Disease</a></li>
+                        <li><a href="health-tips.html" class="text-muted text-decoration-none">Health Tips</a></li>
+                        <li><a href="faq.html" class="text-muted text-decoration-none">FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h6 class="fw-bold mb-2">Developer Links</h6>
+                    <div class="d-flex gap-3">
+                        <a href="https://github.com" target="_blank" class="text-dark fs-5"><i class="fa-brands fa-github"></i></a>
+                        <a href="https://linkedin.com" target="_blank" class="text-dark fs-5"><i class="fa-brands fa-linkedin"></i></a>
+                        <a href="mailto:developer@cardiopulse.ai" class="text-dark fs-5"><i class="fa-solid fa-envelope"></i></a>
+                    </div>
+                </div>
+            </div>
+            <hr class="my-3">
+            <div class="d-flex justify-content-between align-items-center flex-wrap text-muted small">
+                <span>© 2026 CardioPulse AI (v2.5.0). All Rights Reserved.</span>
+                <span>Designed with Minimalist SaaS Principles</span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="js/animations.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>

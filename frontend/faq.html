@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ — CardioPulse AI</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- Sticky Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-custom fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <i class="fa-solid fa-heart-pulse text-dark me-2"></i>CardioPulse AI
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto align-items-center">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="prediction.html">Prediction</a></li>
+                    <li class="nav-item"><a class="nav-link" href="dashboard.html">Dashboard</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">About Heart Disease</a></li>
+                    <li class="nav-item"><a class="nav-link" href="health-tips.html">Health Tips</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="faq.html">FAQ</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container py-4">
+
+        <div class="mb-4" data-aos="fade-up">
+            <h2 class="fw-bold">Frequently Asked Questions</h2>
+            <p class="text-muted">Explore answers to common questions regarding cardiac indicators, machine learning inference, and health recommendations.</p>
+        </div>
+
+        <!-- Live Search Bar -->
+        <div class="med-card mb-4" data-aos="fade-up">
+            <div class="input-group">
+                <span class="input-group-text bg-white border-end-0"><i class="fa-solid fa-magnifying-glass text-muted"></i></span>
+                <input type="text" id="faqSearchInput" class="form-control border-start-0" placeholder="Search FAQs by keyword (e.g. cholesterol, ECG, oldpeak, FastAPI)...">
+            </div>
+        </div>
+
+        <!-- Accordion Container (20 Q&As) -->
+        <div class="accordion" id="faqAccordion" data-aos="fade-up" data-aos-delay="100">
+
+            <div class="accordion-item mb-3 border rounded-3 overflow-hidden">
+                <h2 class="accordion-header" id="faq1">
+                    <button class="accordion-button fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#col1">
+                        Q1: How does the FastAPI backend execute ML inference?
+                    </button>
+                </h2>
+                <div id="col1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+                    <div class="accordion-body text-muted">
+                        The FastAPI microservice loads pre-trained scikit-learn KNN model assets during startup. Upon receiving a POST request at <code>/api/predict</code>, Pydantic validates inputs, applies StandardScaler transformations, and evaluates predictions in milliseconds.
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item mb-3 border rounded-3 overflow-hidden">
+                <h2 class="accordion-header" id="faq2">
+                    <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#col2">
+                        Q2: What does ST depression (Oldpeak) indicate on an ECG?
+                    </button>
+                </h2>
+                <div id="col2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                    <div class="accordion-body text-muted">
+                        Oldpeak represents the displacement of the ST segment during peak exercise relative to rest. Values above 1.0 mm often correlate with reduced coronary blood flow.
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item mb-3 border rounded-3 overflow-hidden">
+                <h2 class="accordion-header" id="faq3">
+                    <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#col3">
+                        Q3: What are the primary types of chest pain recorded in the model?
+                    </button>
+                </h2>
+                <div id="col3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                    <div class="accordion-body text-muted">
+                        The model evaluates four types: ATA (Atypical Angina), NAP (Non-Anginal Pain), TA (Typical Angina), and ASY (Asymptomatic).
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item mb-3 border rounded-3 overflow-hidden">
+                <h2 class="accordion-header" id="faq4">
+                    <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#col4">
+                        Q4: How is Fasting Blood Sugar categorized?
+                    </button>
+                </h2>
+                <div id="col4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                    <div class="accordion-body text-muted">
+                        Fasting Blood Sugar > 120 mg/dl is coded as 1, indicating elevated blood glucose or diabetes risk, whereas <= 120 mg/dl is coded as 0.
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item mb-3 border rounded-3 overflow-hidden">
+                <h2 class="accordion-header" id="faq5">
+                    <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#col5">
+                        Q5: What is the normal range for serum cholesterol?
+                    </button>
+                </h2>
+                <div id="col5" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                    <div class="accordion-body text-muted">
+                        Desirable serum cholesterol is below 200 mg/dl. Borderline high is 200-239 mg/dl, and high is >= 240 mg/dl.
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item mb-3 border rounded-3 overflow-hidden">
+                <h2 class="accordion-header" id="faq6">
+                    <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#col6">
+                        Q6: How does Resting Blood Pressure affect cardiac risk?
+                    </button>
+                </h2>
+                <div id="col6" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                    <div class="accordion-body text-muted">
+                        Resting BP above 130/80 mm Hg increases arterial wall tension, causing vessel stiffening and elevated cardiac workload over time.
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item mb-3 border rounded-3 overflow-hidden">
+                <h2 class="accordion-header" id="faq7">
+                    <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#col7">
+                        Q7: What is Left Ventricular Hypertrophy (LVH)?
+                    </button>
+                </h2>
+                <div id="col7" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                    <div class="accordion-body text-muted">
+                        LVH is thickening of the muscle wall of the heart's main pumping chamber, often caused by chronic hypertension.
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item mb-3 border rounded-3 overflow-hidden">
+                <h2 class="accordion-header" id="faq8">
+                    <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#col8">
+                        Q8: What does ST Slope mean in stress testing?
+                    </button>
+                </h2>
+                <div id="col8" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                    <div class="accordion-body text-muted">
+                        ST Slope describes the trajectory of the ST segment during peak exercise (Up, Flat, or Down). Flat and Down slopes correlate with severe ischemic disease.
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item mb-3 border rounded-3 overflow-hidden">
+                <h2 class="accordion-header" id="faq9">
+                    <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#col9">
+                        Q9: Is my patient data stored or logged on external servers?
+                    </button>
+                </h2>
+                <div id="col9" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                    <div class="accordion-body text-muted">
+                        No. Predictions run in local memory. Patient inputs are processed instantly without external storage.
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item mb-3 border rounded-3 overflow-hidden">
+                <h2 class="accordion-header" id="faq10">
+                    <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#col10">
+                        Q10: Can CardioPulse AI replace a physician's diagnosis?
+                    </button>
+                </h2>
+                <div id="col10" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                    <div class="accordion-body text-muted">
+                        No. CardioPulse AI is a preliminary screening and decision support system. Final diagnoses must be made by qualified medical doctors.
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item mb-3 border rounded-3 overflow-hidden">
+                <h2 class="accordion-header" id="faq11">
+                    <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#col11">
+                        Q11: How is the Body Mass Index (BMI) calculated?
+                    </button>
+                </h2>
+                <div id="col11" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                    <div class="accordion-body text-muted">
+                        BMI is weight in kilograms divided by height in meters squared (kg/m²). Categories include Normal (18.5-24.9), Overweight (25-29.9), and Obese (>=30).
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item mb-3 border rounded-3 overflow-hidden">
+                <h2 class="accordion-header" id="faq12">
+                    <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#col12">
+                        Q12: What is the DASH diet?
+                    </button>
+                </h2>
+                <div id="col12" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                    <div class="accordion-body text-muted">
+                        DASH (Dietary Approaches to Stop Hypertension) focuses on fruits, vegetables, whole grains, lean protein, and sodium limitation under 2,000 mg/day.
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item mb-3 border rounded-3 overflow-hidden">
+                <h2 class="accordion-header" id="faq13">
+                    <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#col13">
+                        Q13: How much daily exercise is recommended for heart health?
+                    </button>
+                </h2>
+                <div id="col13" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                    <div class="accordion-body text-muted">
+                        The American Heart Association recommends at least 150 minutes of moderate aerobic exercise per week.
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item mb-3 border rounded-3 overflow-hidden">
+                <h2 class="accordion-header" id="faq14">
+                    <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#col14">
+                        Q14: What is the significance of Fluoroscopy Vessels (CA)?
+                    </button>
+                </h2>
+                <div id="col14" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                    <div class="accordion-body text-muted">
+                        Fluoroscopy identifies the number of major coronary vessels (0 to 3) colored by contrast dye. More colored vessels indicate significant blockage.
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item mb-3 border rounded-3 overflow-hidden">
+                <h2 class="accordion-header" id="faq15">
+                    <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#col15">
+                        Q15: What are the Thalassemia categories in heart disease diagnostics?
+                    </button>
+                </h2>
+                <div id="col15" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                    <div class="accordion-body text-muted">
+                        Categories include Normal, Fixed Defect (permanent tissue damage), and Reversible Defect (transient ischemia during stress).
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item mb-3 border rounded-3 overflow-hidden">
+                <h2 class="accordion-header" id="faq16">
+                    <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#col16">
+                        Q16: How does stress affect cardiovascular health?
+                    </button>
+                </h2>
+                <div id="col16" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                    <div class="accordion-body text-muted">
+                        Chronic stress triggers cortisol and adrenaline release, increasing heart rate, blood pressure, and arterial inflammation.
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item mb-3 border rounded-3 overflow-hidden">
+                <h2 class="accordion-header" id="faq17">
+                    <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#col17">
+                        Q17: What is the target daily water intake for vascular health?
+                    </button>
+                </h2>
+                <div id="col17" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                    <div class="accordion-body text-muted">
+                        Targeting 2.5 to 3.0 Liters of water daily optimizes blood plasma volume and prevents dehydration-induced blood viscosity spikes.
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item mb-3 border rounded-3 overflow-hidden">
+                <h2 class="accordion-header" id="faq18">
+                    <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#col18">
+                        Q18: How does sleep quality impact heart disease risk?
+                    </button>
+                </h2>
+                <div id="col18" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                    <div class="accordion-body text-muted">
+                        Fewer than 6 hours of sleep per night is associated with hyper-reactivity of the sympathetic nervous system and elevated hypertension risk.
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item mb-3 border rounded-3 overflow-hidden">
+                <h2 class="accordion-header" id="faq19">
+                    <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#col19">
+                        Q19: How can I download my assessment report?
+                    </button>
+                </h2>
+                <div id="col19" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                    <div class="accordion-body text-muted">
+                        After submitting the prediction form, click the "Download Clinical Report (.txt)" button at the bottom of the result card.
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item mb-3 border rounded-3 overflow-hidden">
+                <h2 class="accordion-header" id="faq20">
+                    <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#col20">
+                        Q20: What emergency numbers should I call for acute chest pain?
+                    </button>
+                </h2>
+                <div id="col20" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                    <div class="accordion-body text-muted">
+                        Call national emergency response 108 / 112 or cardiac helpline 1800-123-CARDIAC immediately.
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </main>
+
+    <footer class="footer-custom">
+        <div class="container text-muted small text-center">
+            © 2026 CardioPulse AI (v2.5.0). All Rights Reserved.
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="js/animations.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/faq.js"></script>
+</body>
+</html>

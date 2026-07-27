@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediction — CardioPulse AI</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- Sticky Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-custom fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <i class="fa-solid fa-heart-pulse text-dark me-2"></i>CardioPulse AI
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto align-items-center">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="prediction.html">Prediction</a></li>
+                    <li class="nav-item"><a class="nav-link" href="dashboard.html">Dashboard</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">About Heart Disease</a></li>
+                    <li class="nav-item"><a class="nav-link" href="health-tips.html">Health Tips</a></li>
+                    <li class="nav-item"><a class="nav-link" href="faq.html">FAQ</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container py-4">
+
+        <div class="mb-4">
+            <h2 class="fw-bold">Patient Risk Assessment Form</h2>
+            <p class="text-muted">Fill in the clinical indicators below to generate an AI-powered Heart Disease evaluation via FastAPI backend.</p>
+        </div>
+
+        <!-- Form Card -->
+        <div class="med-card" data-aos="fade-up">
+            <form id="predictionForm">
+                
+                <!-- Section 1: Demographics & BMI -->
+                <div class="med-card-header">
+                    <i class="fa-solid fa-user-doctor me-2"></i> Section 1: Demographics & Body Metrics
+                </div>
+
+                <div class="row g-3 mb-3">
+                    <div class="col-md-3">
+                        <label for="age" class="form-label font-weight-bold"><i class="fa-solid fa-calendar me-1"></i> Age (Years)</label>
+                        <input type="number" class="form-control" id="age" value="45" min="18" max="100" required>
+                        <small class="text-muted">Patient age in completed years</small>
+                    </div>
+                    <div class="col-md-3">
+                        <label for="sex" class="form-label font-weight-bold"><i class="fa-solid fa-venus-mars me-1"></i> Gender / Sex</label>
+                        <select class="form-select" id="sex">
+                            <option value="M" selected>Male (M)</option>
+                            <option value="F">Female (F)</option>
+                        </select>
+                        <small class="text-muted">Biological sex</small>
+                    </div>
+                    <div class="col-md-3">
+                        <label for="height_cm" class="form-label font-weight-bold"><i class="fa-solid fa-ruler-vertical me-1"></i> Height (cm)</label>
+                        <input type="number" class="form-control" id="height_cm" value="170" min="100" max="250">
+                        <small class="text-muted">Used for BMI calculation</small>
+                    </div>
+                    <div class="col-md-3">
+                        <label for="weight_kg" class="form-label font-weight-bold"><i class="fa-solid fa-weight-scale me-1"></i> Weight (kg)</label>
+                        <input type="number" class="form-control" id="weight_kg" value="70" min="30" max="200">
+                        <small class="text-muted">Used for BMI calculation</small>
+                    </div>
+                </div>
+
+                <!-- Live BMI Calculator Bar -->
+                <div class="p-3 mb-4 rounded-3 border d-flex justify-content-between align-items-center bg-light">
+                    <span><i class="fa-solid fa-calculator me-2"></i> <b>BMI Calculator:</b> Baseline Body Mass Index: <b id="bmiValue">24.2 kg/m²</b></span>
+                    <span id="bmiBadge" class="badge-success-minimal">Normal</span>
+                </div>
+
+                <!-- Section 2: Cardiac Clinical Indicators (2 Columns) -->
+                <div class="med-card-header">
+                    <i class="fa-solid fa-stethoscope me-2"></i> Section 2: Cardiac Clinical Indicators
+                </div>
+
+                <div class="row g-3 mb-4">
+                    <div class="col-md-6">
+                        <label for="chest_pain" class="form-label"><i class="fa-solid fa-heart-pulse me-1"></i> Chest Pain Type</label>
+                        <select class="form-select" id="chest_pain">
+                            <option value="ATA">Atypical Angina (ATA)</option>
+                            <option value="NAP">Non-Anginal Pain (NAP)</option>
+                            <option value="TA">Typical Angina (TA)</option>
+                            <option value="ASY" selected>Asymptomatic (ASY)</option>
+                        </select>
+                        <small class="text-muted">ATA: Atypical, NAP: Non-Anginal, TA: Typical, ASY: Asymptomatic</small>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="resting_bp" class="form-label"><i class="fa-solid fa-gauge-high me-1"></i> Resting Blood Pressure (mm Hg)</label>
+                        <input type="number" class="form-control" id="resting_bp" value="120" min="80" max="220" required>
+                        <small class="text-muted">Blood pressure upon admission to hospital</small>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label for="cholesterol" class="form-label"><i class="fa-solid fa-droplet me-1"></i> Serum Cholesterol (mg/dl)</label>
+                        <input type="number" class="form-control" id="cholesterol" value="210" min="80" max="600" required>
+                        <small class="text-muted">Serum cholesterol level</small>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="fasting_bs" class="form-label"><i class="fa-solid fa-cubes me-1"></i> Fasting Blood Sugar > 120 mg/dl</label>
+                        <select class="form-select" id="fasting_bs">
+                            <option value="0" selected>No (0)</option>
+                            <option value="1">Yes (1)</option>
+                        </select>
+                        <small class="text-muted">1 if Fasting Glucose > 120 mg/dl, else 0</small>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label for="resting_ecg" class="form-label"><i class="fa-solid fa-wave-square me-1"></i> Resting ECG Results</label>
+                        <select class="form-select" id="resting_ecg">
+                            <option value="Normal" selected>Normal</option>
+                            <option value="ST">ST-T Wave Abnormality (ST)</option>
+                            <option value="LVH">Left Ventricular Hypertrophy (LVH)</option>
+                        </select>
+                        <small class="text-muted">Electrocardiogram resting reading</small>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="max_hr" class="form-label"><i class="fa-solid fa-heart me-1"></i> Maximum Heart Rate Achieved</label>
+                        <input type="number" class="form-control" id="max_hr" value="150" min="60" max="220" required>
+                        <small class="text-muted">Maximum HR achieved during exercise</small>
+                    </div>
+
+                    <div class="col-md-4">
+                        <label for="exercise_angina" class="form-label"><i class="fa-solid fa-person-running me-1"></i> Exercise Angina</label>
+                        <select class="form-select" id="exercise_angina">
+                            <option value="N" selected>No (N)</option>
+                            <option value="Y">Yes (Y)</option>
+                        </select>
+                        <small class="text-muted">Angina induced by exercise</small>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="oldpeak" class="form-label"><i class="fa-solid fa-chart-line me-1"></i> Oldpeak (ST Depression)</label>
+                        <input type="number" class="form-control" id="oldpeak" value="1.0" step="0.1" min="0.0" max="6.0" required>
+                        <small class="text-muted">ST depression relative to rest</small>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="st_slope" class="form-label"><i class="fa-solid fa-arrows-up-to-line me-1"></i> ST Slope Segment</label>
+                        <select class="form-select" id="st_slope">
+                            <option value="Up">Upward Slope (Up)</option>
+                            <option value="Flat" selected>Flat Slope (Flat)</option>
+                            <option value="Down">Downward Slope (Down)</option>
+                        </select>
+                        <small class="text-muted">Peak exercise ST slope</small>
+                    </div>
+                </div>
+
+                <div class="d-flex gap-3 flex-wrap">
+                    <button type="submit" id="submitBtn" class="btn btn-black flex-grow-1">Run Predict Assessment <i class="fa-solid fa-arrow-right ms-2"></i></button>
+                    <button type="reset" class="btn btn-outline-custom">Reset</button>
+                    <button type="button" id="clearFormBtn" class="btn btn-outline-custom">Clear Form</button>
+                </div>
+            </form>
+        </div>
+
+        <!-- Progress Spinner Loading State -->
+        <div id="loadingSpinner" class="text-center py-5 d-none">
+            <div class="progress mb-3 mx-auto max-w-500" style="height: 6px;">
+                <div class="progress-bar progress-bar-striped progress-bar-animated bg-dark" role="progressbar" style="width: 100%;"></div>
+            </div>
+            <div class="spinner-border text-dark" role="status" style="width: 2.5rem; height: 2.5rem;">
+                <span class="visually-hidden">Evaluating patient data...</span>
+            </div>
+            <p class="text-muted mt-3">Evaluating physiological indicators against FastAPI ML backend...</p>
+        </div>
+
+        <!-- Result Output Section -->
+        <div id="resultSection" class="d-none mt-4" data-aos="fade-up">
+            <div id="resultCardContainer"></div>
+            <div id="recommendationsContainer" class="mt-4"></div>
+
+            <div class="d-flex gap-3 mt-4">
+                <button id="downloadReportBtn" class="btn btn-black">📥 Download Clinical Report (.txt)</button>
+                <a href="dashboard.html" class="btn btn-outline-custom">View Analytics Dashboard →</a>
+            </div>
+        </div>
+
+    </main>
+
+    <footer class="footer-custom">
+        <div class="container text-muted small text-center">
+            © 2026 CardioPulse AI (v2.5.0). All Rights Reserved.
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="js/animations.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/prediction.js"></script>
+</body>
+</html>
